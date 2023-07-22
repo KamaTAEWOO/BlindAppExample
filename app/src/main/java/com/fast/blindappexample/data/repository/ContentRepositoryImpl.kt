@@ -9,6 +9,7 @@ import com.fast.blindappexample.domain.model.Content
 import com.fast.blindappexample.domain.repository.ContentRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class ContentRepositoryImpl @Inject constructor(
@@ -17,23 +18,30 @@ class ContentRepositoryImpl @Inject constructor(
 ) : ContentRepository {
     override fun loadList(): Flow<List<Content>> {
         return flow {
-            // emit을 만나게 되면 아랫쪽 emit이 실행되지 않기 떄문임.
-//            contentDao.selectAll().collect {
-//                emit(it.map { it.toContent() })
-//            }
-            emit(
-                try {
-                    contentService.getList().data.map { it.toContent() }
-                } catch (e: Exception) {
-                    emptyList()
+            try {
+                contentService.getList().data.also { list ->
+                    // dto -> entity -> dao
+                    contentDao.insertAll(list.map { it.toEntity() })
                 }
-            )
+            } finally {
+                //emit을 만나게 되면 아랫쪽 emit이 실행되지 않기 떄문임.
+                // 내부 디비 동작
+                contentDao.selectAll().collect {
+                    emit(it.map { it.toContent() })
+                }
+            }
         }
     }
 
     override suspend fun save(item: Content): Boolean {
         return try {
-            contentService.saveItem(item.toRequest())
+            contentService.saveItem(item.toRequest()).also {
+                if (it.success) {
+                    it.data?.let {
+                        contentDao.insert(it.toEntity())
+                    }
+                }
+            }
             contentDao.insert(item.toEntity())
             true
         } catch (e: Exception) {
@@ -43,7 +51,13 @@ class ContentRepositoryImpl @Inject constructor(
 
     override suspend fun update(item: Content): Boolean {
         return try {
-            contentService.updateItem(item.toRequest())
+            contentService.updateItem(item.toRequest()).also {
+                if (it.success) {
+                    it.data?.let {
+                        contentDao.insert(it.toEntity())
+                    }
+                }
+            }
             contentDao.insert(item.toEntity())
             true
         } catch (e: Exception) {
@@ -53,8 +67,13 @@ class ContentRepositoryImpl @Inject constructor(
 
     override suspend fun delete(item: Content): Boolean {
         return try {
-            item.id?.let { contentService.deleteItem(it) }
-            contentDao.delete(item.toEntity())
+            item.id?.let { id ->
+                contentService.deleteItem(id).also {
+                    if (it.success) {
+                        contentDao.delete(item.toEntity())
+                    }
+                }
+            }
             true
         } catch (e: Exception) {
             false
