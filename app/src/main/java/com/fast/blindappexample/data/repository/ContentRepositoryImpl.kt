@@ -15,9 +15,9 @@ class ContentRepositoryImpl @Inject constructor(
 
     override suspend fun save(item: Content): Boolean {
         return try {
-            val response = contentService.saveItem(item.toRequest())
+            contentService.saveItem(item.toRequest())
             contentDao.insert(item.toEntity())
-            response.success
+            true
         } catch (e: Exception) {
             false
         }
