@@ -2,11 +2,18 @@ package com.fast.blindappexample.presenter.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.fast.blindappexample.domain.model.Content
+import com.fast.blindappexample.domain.usecase.ContentUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-//@HiltViewModel
-class InputViewModel : ViewModel() {
+@HiltViewModel
+class InputViewModel @Inject constructor(
+    private val contentUseCase: ContentUseCase
+) : ViewModel() {
 
     private val _doneEvent = MutableLiveData<Pair<Boolean, String>>()
     val doneEvent = _doneEvent
@@ -34,6 +41,22 @@ class InputViewModel : ViewModel() {
             return
         }
 
-        // api 호출
+        viewModelScope.launch(Dispatchers.IO) {
+            contentUseCase.save(
+                item?.copy(
+                    category = categoryValue,
+                    title = titleValue,
+                    content = contentValue
+                ) ?: Content(
+                    category = categoryValue,
+                    title = titleValue,
+                    content = contentValue
+                ).also {
+                    _doneEvent.postValue(
+                        Pair(true, if(it as Boolean) "저장되었습니다." else "저장에 실패했습니다.")
+                    )
+                }
+            )
+        }
     }
 }
