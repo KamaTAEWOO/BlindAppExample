@@ -10,4 +10,5 @@ class ContentUseCase @Inject constructor(
 ) {
     fun loadList() = contentRepository.loadList()
     suspend fun save(item: Content): Boolean = contentRepository.save(item)
+    suspend fun delete(item: Content) = contentRepository.delete(item)
 }

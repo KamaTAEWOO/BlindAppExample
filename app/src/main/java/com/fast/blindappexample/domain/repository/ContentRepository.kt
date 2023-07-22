@@ -10,4 +10,6 @@ interface ContentRepository {
     suspend fun save(item: Content) : Boolean
 
     suspend fun update(item: Content) : Boolean
+
+    suspend fun delete(item: Content) : Boolean
 }
