@@ -17,9 +17,10 @@ class ContentRepositoryImpl @Inject constructor(
 ) : ContentRepository {
     override fun loadList(): Flow<List<Content>> {
         return flow {
-            contentDao.selectAll().collect {
-                emit(it.map { it.toContent() })
-            }
+            // emit을 만나게 되면 아랫쪽 emit이 실행되지 않기 떄문임.
+//            contentDao.selectAll().collect {
+//                emit(it.map { it.toContent() })
+//            }
             emit(
                 try {
                     contentService.getList().data.map { it.toContent() }
