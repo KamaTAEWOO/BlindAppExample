@@ -53,6 +53,7 @@ class ContentRepositoryImpl @Inject constructor(
     override suspend fun delete(item: Content): Boolean {
         return try {
             item.id?.let { contentService.deleteItem(it) }
+            contentDao.delete(item.toEntity())
             true
         } catch (e: Exception) {
             false
