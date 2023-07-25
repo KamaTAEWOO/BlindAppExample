@@ -1,7 +1,6 @@
 package com.fast.blindappexample.data.source.local.dao
 
 import androidx.room.*
-import com.fast.blindappexample.data.model.entity.ContentEntity
 import com.fast.blindappexample.data.model.entity.FoodEntity
 import kotlinx.coroutines.flow.Flow
 

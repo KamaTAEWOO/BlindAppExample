@@ -19,6 +19,7 @@ class InputActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityInputBinding.inflate(layoutInflater).apply {
             setContentView(root)
             lifecycleOwner = this@InputActivity

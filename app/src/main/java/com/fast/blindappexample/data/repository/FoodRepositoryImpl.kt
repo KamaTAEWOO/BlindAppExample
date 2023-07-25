@@ -17,6 +17,7 @@ class FoodRepositoryImpl @Inject constructor(
     override fun loadList(): Flow<List<Food>> {
         return flow {
             try {
+
                 foodService.getList().data.also{ list ->
                     foodDao.insertAll(list.map { it.toEntity() })
                 }
