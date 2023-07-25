@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface FoodService {
 
-    @GET("list")
+    @GET("tasty.html?mode=json&addr=%EC%A4%91%EA%B5%AC")
     suspend fun getList(): FoodListResponse
 }
