@@ -7,8 +7,11 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.fast.blindappexample.databinding.ActivityFoodBinding
 import com.fast.blindappexample.presenter.viewmodel.FoodViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FoodActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityFoodBinding
     private val viewModel: FoodViewModel by viewModels()
 
@@ -20,6 +23,8 @@ class FoodActivity : AppCompatActivity() {
             lifecycleOwner = this@FoodActivity
             viewModel = this@FoodActivity.viewModel
         }
+
+        viewModel.initLoadList()
     }
 
     companion object {
