@@ -1,8 +1,11 @@
 package com.fast.blindappexample.data.model
 
 import com.fast.blindappexample.data.model.dto.ContentDto
+import com.fast.blindappexample.data.model.dto.FoodDto
 import com.fast.blindappexample.data.model.entity.ContentEntity
+import com.fast.blindappexample.data.model.entity.FoodEntity
 import com.fast.blindappexample.data.source.local.dao.ContentDao
+import com.fast.blindappexample.data.source.local.dao.FoodDao
 import com.fast.blindappexample.domain.model.Content
 import java.util.*
 
@@ -60,5 +63,12 @@ object ContentMapper {
         commentCount = commentCount ?: 0,
         viewCount = viewCount ?: 0,
         createdDate = createdDate ?: Date(),
+    )
+
+    // Food
+    fun FoodDto.toEntity() = FoodEntity (
+        cnt = cnt ?: -1,
+        address = address,
+        name = name,
     )
 }
