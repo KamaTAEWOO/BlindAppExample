@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.fast.blindappexample.databinding.ActivityFoodfindBinding
 
-class FoodFindActivity : AppCompatActivity() {
+class FoodActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFoodfindBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,14 +14,14 @@ class FoodFindActivity : AppCompatActivity() {
 
         binding = ActivityFoodfindBinding.inflate(layoutInflater).apply {
             setContentView(root)
-            view = this@FoodFindActivity
+            view = this@FoodActivity
         }
     }
 
     companion object {
 
         fun start(context: Context) {
-            Intent(context, FoodFindActivity::class.java).apply {
+            Intent(context, FoodActivity::class.java).apply {
                 context.startActivity(this)
             }
         }

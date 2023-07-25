@@ -3,7 +3,7 @@
     <data>
         <variable
             name="view"
-            type="com.fast.blindappexample.presenter.ui.FoodFindActivity" />
+            type="com.fast.blindappexample.presenter.ui.FoodActivity" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"

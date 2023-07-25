@@ -28,7 +28,7 @@
         <activity android:name=".presenter.ui.InputActivity"
             android:windowSoftInputMode="adjustResize"/>
 
-        <activity android:name=".presenter.ui.FoodFindActivity" />
+        <activity android:name=".presenter.ui.FoodActivity" />
     </application>
 
 </manifest>
