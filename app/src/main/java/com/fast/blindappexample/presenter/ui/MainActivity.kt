@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                 DividerItemDecoration(this@MainActivity, LinearLayout.VERTICAL)
             )
         }
-        observeViewModel()
+        //observeViewModel()
     }
 
     private fun observeViewModel() {

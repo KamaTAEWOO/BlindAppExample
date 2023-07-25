@@ -13,3 +13,10 @@ data class ContentResponse(
     val message: String,
     val data: ContentDto?
 )
+
+data class FoodListResponse(
+    val success: Boolean,
+    val code: Int,
+    val message: String,
+    val data: List<FoodDto>
+)

@@ -30,6 +30,7 @@ class InputActivity : AppCompatActivity() {
         (intent.getSerializableExtra(ITEM) as? Content)?.let {
             viewModel.initData(it)
         }
+        observeViewModel()
     }
 
     override fun onSupportNavigateUp(): Boolean {
