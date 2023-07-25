@@ -13,9 +13,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.fast.blindappexample.databinding.ActivityMainBinding
 import com.fast.blindappexample.domain.model.Content
+import com.fast.blindappexample.presenter.ui.InputActivity.Companion.start
 import com.fast.blindappexample.presenter.ui.list.ListAdapter
 import com.fast.blindappexample.presenter.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.NonCancellable.start
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -82,5 +84,10 @@ class MainActivity : AppCompatActivity() {
                 .show()
             return false
         }
+    }
+
+    // 맛집 찾아주는 버튼
+    fun onClickFind() {
+        FoodFindActivity.start(this)
     }
 }
