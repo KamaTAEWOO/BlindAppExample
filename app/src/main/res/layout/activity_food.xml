@@ -2,8 +2,8 @@
 <layout>
     <data>
         <variable
-            name="view"
-            type="com.fast.blindappexample.presenter.ui.FoodActivity" />
+            name="viewModel"
+            type="com.fast.blindappexample.presenter.viewmodel.FoodViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
