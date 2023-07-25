@@ -21,7 +21,9 @@ class FoodFindActivity : AppCompatActivity() {
     companion object {
 
         fun start(context: Context) {
-            Intent(context, FoodFindActivity::class.java)
+            Intent(context, FoodFindActivity::class.java).apply {
+                context.startActivity(this)
+            }
         }
     }
 }
