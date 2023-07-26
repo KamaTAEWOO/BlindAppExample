@@ -10,7 +10,7 @@ class FoodViewModel @Inject constructor(
     private val foodUseCase: FoodUseCase
 ) : ViewModel() {
 
-    init {
+    fun initLoadList() {
         foodUseCase.loadList()
     }
 }
