@@ -49,7 +49,7 @@ object RetrofitModule {
         gsonConverterFactory: GsonConverterFactory
     ):Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://www.daegufood.go.kr/kor/api/tasty.html?mode=json&addr=%EC%A4%91%EA%B5%AC")
+            .baseUrl("https://www.daegufood.go.kr/kor/api/")
             .addConverterFactory(gsonConverterFactory)
             .build()
     }
