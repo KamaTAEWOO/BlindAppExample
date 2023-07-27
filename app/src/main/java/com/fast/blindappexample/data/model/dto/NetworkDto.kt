@@ -15,8 +15,7 @@ data class ContentResponse(
 )
 
 data class FoodListResponse(
-    val success: Boolean,
-    val code: Int,
-    val message: String,
+    val status: String,
+    val total: Int,
     val data: List<FoodDto>
 )
