@@ -8,7 +8,7 @@ import com.fast.blindappexample.data.model.entity.FoodEntity
 import com.fast.blindappexample.data.source.local.dao.ContentDao
 import com.fast.blindappexample.data.source.local.dao.FoodDao
 
-@Database(entities = [ContentEntity::class, FoodEntity::class], version = 1)
+@Database(entities = [ContentEntity::class, FoodEntity::class], version = 3)
 @TypeConverters(DateConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 
