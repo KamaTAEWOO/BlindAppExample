@@ -1,6 +1,7 @@
 package com.fast.blindappexample.data.repository
 
 import com.fast.blindappexample.data.model.ContentMapper.toEntity
+import com.fast.blindappexample.data.model.ContentMapper.toFood
 import com.fast.blindappexample.data.source.local.dao.FoodDao
 import com.fast.blindappexample.data.source.remote.api.FoodService
 import com.fast.blindappexample.domain.model.Food
@@ -18,12 +19,17 @@ class FoodRepositoryImpl @Inject constructor(
     override fun loadList(): Flow<List<Food>> {
         return flow {
             try {
-                foodService.getList().data.also{ list ->
-                    foodDao.insertAll(list.map { it.toEntity() })
+//                foodService.getList().data.also { list ->
+//                    foodDao.insertAll(list.map { it.toEntity() })
+//                }
+                foodDao.selectAll().collect {
+                    emit(it.map { it.toFood() })
                 }
                 Timber.d("foodRepositoryImpl loadList() ${foodService.getList().total}")
-            }catch (e: Exception) {
-                e.printStackTrace()
+            } finally {
+                foodDao.selectAll().collect {
+                    emit(it.map { it.toFood() })
+                }
             }
         }
     }
