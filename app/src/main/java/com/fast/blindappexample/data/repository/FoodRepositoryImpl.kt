@@ -7,6 +7,7 @@ import com.fast.blindappexample.domain.model.Food
 import com.fast.blindappexample.domain.repository.FoodRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import timber.log.Timber
 import javax.inject.Inject
 
 class FoodRepositoryImpl @Inject constructor(
@@ -17,10 +18,10 @@ class FoodRepositoryImpl @Inject constructor(
     override fun loadList(): Flow<List<Food>> {
         return flow {
             try {
-
                 foodService.getList().data.also{ list ->
                     foodDao.insertAll(list.map { it.toEntity() })
                 }
+                Timber.d("foodRepositoryImpl loadList() ${foodService.getList().total}")
             }catch (e: Exception) {
                 e.printStackTrace()
             }

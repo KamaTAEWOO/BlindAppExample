@@ -1,5 +1,6 @@
 package com.fast.blindappexample.data.model.entity
 
+import androidx.annotation.Nullable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,11 +9,43 @@ import androidx.room.PrimaryKey
 data class FoodEntity (
 
     @PrimaryKey(false)
-    val cnt: Int,
+    val cnt: String,
     @ColumnInfo
-    val address: String,
+    val opendataId: String,
     @ColumnInfo
-    val name: String,
+    val gngCs: String,
+    @ColumnInfo
+    val fdCs: String,
+    @ColumnInfo
+    val bzNm: String,
+    @ColumnInfo
+    val tlno: String,
+    @ColumnInfo
+    val mbzHr: String,
+    @ColumnInfo
+    val seatCnt: String,
+    @ColumnInfo
+    val pkpl: String,
+    @ColumnInfo
+    val hp: String,
+    @ColumnInfo
+    val psbFrn: String,
+    @ColumnInfo
+    val bknYn: String,
+    @ColumnInfo
+    val infnFcl: String,
+    @ColumnInfo
+    val brftYn: String,
+    @ColumnInfo
+    val dssrtYn: String,
+    @ColumnInfo
+    val mnu: String,
+    @ColumnInfo
+    val smplDesc: String,
+    @ColumnInfo
+    val sbw: String,
+    @ColumnInfo
+    val bus: String
 ): java.io.Serializable
 
 // "data": [
