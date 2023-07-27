@@ -15,4 +15,4 @@
 전체적으로 클린아키텍처의 구조를 알아보는 시간이였으며, 이해하는데 쉽지 않았지만, 그래도 구조정도는 알았음.
 하지만, 아직 처음 해보아서 많은 것이 부족한 상태이며, 계속 짜보면서 이해하려고 노력할 예정.
 
-<img src="https://github.com/KamaTAEWOO/BlindAppExample/assets/48404941/cbcb8915-bd96-40a8-9a88-adcc3fdfaa45" width=300 height=250/>
+<img src="https://github.com/KamaTAEWOO/BlindAppExample/assets/48404941/cbcb8915-bd96-40a8-9a88-adcc3fdfaa45" width=400 height=600/>
