@@ -4,9 +4,8 @@ import com.fast.blindappexample.data.model.dto.ContentDto
 import com.fast.blindappexample.data.model.dto.FoodDto
 import com.fast.blindappexample.data.model.entity.ContentEntity
 import com.fast.blindappexample.data.model.entity.FoodEntity
-import com.fast.blindappexample.data.source.local.dao.ContentDao
-import com.fast.blindappexample.data.source.local.dao.FoodDao
 import com.fast.blindappexample.domain.model.Content
+import com.fast.blindappexample.domain.model.Food
 import java.util.*
 
 object ContentMapper {
@@ -87,5 +86,27 @@ object ContentMapper {
         smplDesc = SMPL_DESC ?: "null",
         sbw = SBW ?: "null",
         bus = BUS ?: "null",
+    )
+
+    fun FoodEntity.toFood() = Food (
+        cnt = cnt ?: "null",
+        opendataId = opendataId,
+        gngCs = gngCs,
+        fdCs = fdCs,
+        bzNm = bzNm,
+        tlno = tlno,
+        mbzHr = mbzHr,
+        seatCnt = seatCnt,
+        pkpl = pkpl,
+        hp = hp,
+        psbFrn = psbFrn,
+        bknYn = bknYn,
+        infnFcl = infnFcl,
+        brftYn = brftYn,
+        dssrtYn = dssrtYn,
+        mnu = mnu,
+        smplDesc = smplDesc,
+        sbw = sbw,
+        bus = bus,
     )
 }
